@@ -2,7 +2,7 @@
 
 import abc
 from typing import Type
-
+from typing import Dict, List, Tuple, Type, Union
 import gym
 import numpy as np
 import torch as th
@@ -99,7 +99,7 @@ class FFLayer(nn.Linear):
         self.opt.step()
         return (self.forward(x_pos).detach()+self.forward(x_neg).detach())/2
 
-class MlpExtractor(nn.Module):
+class MlpExtractor_FF(torch_layers.MlpExtractor):
 
     def __init__(
         self,
@@ -173,7 +173,7 @@ class ForwardForward32Policy(policies.ActorCriticPolicy):
         # Note: If net_arch is None and some features extractor is used,
         #       net_arch here is an empty list and mlp_extractor does not
         #       really contain any layers (acts like an identity module).
-        self.mlp_extractor = MlpExtractor(
+        self.mlp_extractor = MlpExtractor_FF(
             self.features_dim,
             net_arch=self.net_arch,
             activation_fn=self.activation_fn,
