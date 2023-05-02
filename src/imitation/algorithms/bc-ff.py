@@ -251,7 +251,7 @@ def reconstruct_policy(
     return policy
 
 
-class BC(algo_base.DemonstrationAlgorithm):
+class BC_FF(algo_base.DemonstrationAlgorithm):
     """Behavioral cloning (BC).
 
     Recovers a policy via supervised learning from observation-action pairs.
