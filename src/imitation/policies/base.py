@@ -155,7 +155,7 @@ class MlpExtractor_FF(torch_layers.MlpExtractor):
         return self.train(pos,neg)
     
     def create_data(self, features):
-      pass 
+      return features[:len(features)//2] , features[len(features)//2:]
       ## This function will be updated after pseudo reward model is trained.
 
 class ForwardForward32Policy(policies.ActorCriticPolicy):
