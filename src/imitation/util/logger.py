@@ -34,11 +34,11 @@ def make_output_format(
     """
     os.makedirs(log_dir, exist_ok=True)
     if _format == "stdout":
-        return sb_logger.HumanOutputFormat(sys.stdout, max_length=max_length)
+        return sb_logger.HumanOutputFormat(sys.stdout)
     elif _format == "log":
         return sb_logger.HumanOutputFormat(
             os.path.join(log_dir, f"log{log_suffix}.txt"),
-            max_length=max_length,
+            
         )
     else:
         return sb_logger.make_output_format(_format, log_dir, log_suffix)
